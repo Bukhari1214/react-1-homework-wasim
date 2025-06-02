@@ -1,0 +1,51 @@
+/* TASK - React 1 week 1 */
+
+.section {
+  padding: 2rem;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.imageWrapper {
+  margin-bottom: 1rem;
+}
+
+.image {
+  object-fit: contain;
+  border-radius: 5%;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.role {
+  font-weight: 500;
+  color: blue;
+  margin-bottom: 0.5rem;
+}
+
+.bio {
+  font-size: 0.95rem;
+  text-align: left;
+  text-indent: 1.5em;
+}
