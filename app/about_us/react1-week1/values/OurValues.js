@@ -9,8 +9,8 @@ const OurValues = () => {
     <section className={styles.section}>
       <h2 className={styles.heading}>Our Values</h2>
       <ul className={styles.list}>
-        {ourValuesData.map((value, index) => (
-          <li key={index} className={styles.item}>
+        {ourValuesData.map((value) => (
+          <li key={value.description} className={styles.item}>
             <h3 className={styles.title}>{value.title}</h3>
             <p className={styles.description}>{value.description}</p>
           </li>

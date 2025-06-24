@@ -10,8 +10,8 @@ const OurPartners = () => {
     <section className={styles.section}>
       <h2 className={styles.heading}>Our Business Partners</h2>
       <div className={styles.grid}>
-        {partners.map((partner, index) => (
-          <div key={index} className={styles.card}>
+        {partners.map((partner) => (
+          <div key={partner.name} className={styles.card}>
             <Image
               src={partner.image}
               alt={partner.name}

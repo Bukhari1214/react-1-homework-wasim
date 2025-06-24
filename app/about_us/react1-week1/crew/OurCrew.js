@@ -10,8 +10,8 @@ const OurCrew = () => {
     <section className={styles.section}>
       <h2 className={styles.heading}>Our Crew</h2>
       <div className={styles.grid}>
-        {crewData.map((member, index) => (
-          <div key={index} className={styles.card}>
+        {crewData.map((member) => (
+          <div key={member.name} className={styles.card}>
             <div className={styles.imageWrapper}>
               <Image
                 src={member.image}
