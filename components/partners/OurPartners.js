@@ -1,5 +1,3 @@
-// TASK - React 1 week 1
-
 import React from "react";
 import Image from "next/image";
 import partners from "@/data/react1-week1/ourPartnersData";

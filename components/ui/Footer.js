@@ -19,11 +19,6 @@ export const Footer = () => {
         </p>
         <p>&copy; 2024 Galactica. All rights reserved.</p>
       </div>
-      {/* TASK - React 1 week 2 */}
-      {/* Create a new List for the Pages */}
-      {/* We need to use the <Link /> component here */}
-
-      {/* Instead of creating List Component I exported and used navbarItems from Navbar.js with Link next/link */}
 
       <div className={styles.pages}>
         <h3>Pages</h3>
@@ -35,14 +30,10 @@ export const Footer = () => {
                   {item.title}
                 </Link>
               </li>
-              // <NavItems title={item.title} link={item.link} />
             ))}
         </ul>
       </div>
-      {/* Docs for the Link: https://nextjs.org/docs/pages/api-reference/components/link */}
 
-      {/* TASK - React 1 week 1 */}
-      {/* Add a new list item for LINKEDIN */}
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
@@ -71,28 +62,6 @@ export const Footer = () => {
             title={"LinkedIn"}
             icon={"/socialmedialogos/linkedin.webp"}
           />
-          {/* 
-          <li>
-            <a href="https://facebook.com">Facebook</a>
-          </li>
-          <li>
-            <a href="https://instagram.com">Instagram</a>
-          </li>
-          <li>
-            <a href="https://tiktok.com">Tiktok</a>
-          </li>
-          <li>
-            <a href="https://google.com">On the streets at night</a>
-          </li>
-          <li>
-            <a href="https://linkedin.com">LinkedIn</a>
-          </li> */}
-
-          {/* TASK - React 1 week 2 */}
-          {/* Create a <SocialMediaItem /> component and replace all of the list items! */}
-          {/* it should accept the following props */}
-          {/* url, title, icon */}
-          {/* For the icons, you can download 1-2 social media icons for testing and put it in the /public/socialmedia/ folder */}
         </ul>
       </div>
     </footer>

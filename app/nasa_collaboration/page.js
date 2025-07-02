@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import RoverPhoto from "@/components/RoverPhoto/RoverPhoto";
 
-// Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
-// You need a proper API_KEY for the requests to work
 const API_KEY = "rh1EIf1Dy4gAAQKSaeZcqdAFZYzGdq2qfPXrEwTe";
 
 const NASA_URLs = {
@@ -16,9 +14,6 @@ const NASA_URLs = {
 export const NasaCollaboration = () => {
   const [dailyImg, setDailyImg] = useState({});
   const [roverPhoto, setRoverPhoto] = useState({});
-
-  // TASK - React 1 week 3
-  // fetch the extra data for NASA_URLs.astronomyPicOfTheDay and save it to the dailyImg state variable
 
   useEffect(() => {
     const fetchRoverPhotos = async () => {
@@ -55,27 +50,10 @@ export const NasaCollaboration = () => {
             alt={dailyImg.title}
             className={styles.nasaPicOfTheDayImg}
           />
-
-          {/* TASK - React 1 week 3 */}
-          {/* After fetching data from the NASA_URLs.astronomyPicOfTheDay url, display the returned data here */}
-          {/* You should display the title, explanation, and the image using the url from the response */}
-          {/* <img src={dailyImg.url}> */}
         </section>
         <section className="card">
-          {/* TASK - React 1 week 3 */}
-          {/* Iteratate over the roverPhoto?.photos array and display all the pictures! */}
           {roverPhoto?.photos?.length ? (
             <>
-              {/* TASK - React 1 week 3 */}
-              {/* Create a react component for the <RoverPhoto />, which should accept the following props */}
-              {/* 1. src: source of the img (img_src in the data from the API) */}
-              {/* 2. date: earth_date data coming from the API */}
-              {/* 3. roverName: will be in the rover object - rover.name */}
-
-              {/* TIPS: */}
-              {/* If you don't know how the data looks like you can: */}
-              {/* 1. use console.log() to write the data to the console */}
-              {/* 2. use the network tab in the developer tab - https://developer.chrome.com/docs/devtools/network */}
               <div className={styles.roverCard}>
                 {roverPhoto.photos.map((photo) => (
                   <RoverPhoto

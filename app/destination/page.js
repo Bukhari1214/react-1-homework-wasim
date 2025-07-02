@@ -8,19 +8,11 @@ import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
 import { destinationToGO } from "@/data/destonation";
 import PlanetCard from "@/components/PlanetCard/PlanetCard";
 
-// TASK - React 1 week 2
-// Move this to its own file
-// MOVED to components/PlanetWishlistItem/PlanetWishlistItem.jsx
-
 export const Destinations = () => {
   const [selectedPlanets, onAddPlanet] = useState([]);
   const [selectedDestinationTogo, setSelectedDestinationTogo] = useState([]);
 
   const onAddOrRemovePlanet = (thumbnail, name) => {
-    // TASK - React 1 week 2
-    // Implement this function
-    // If you press the "ADD PLANET" the selected planet should display "SELECTED"
-    // And the counter should update, how many planets are selected (numberOfPlanets)
     onAddPlanet((prev) => [
       ...prev,
       {
@@ -61,24 +53,12 @@ export const Destinations = () => {
         <h1>Travel destinations</h1>
         <section className="card">
           <h2>Wishlist</h2>
-          {/* TASK - React 1 week 2 */}
-          {/* Display the number Of selected planets */}
-          {/* Display the "no planets" message if it is empty! */}
 
           {selectedPlanets.length > 0 ? (
             <p>You have {selectedPlanets.length} in your wishlist</p>
           ) : (
             <p>{"No planets in wishlist :("}</p>
           )}
-
-          {/* STOP! - this is for week 3!*/}
-          {/* TASK - React 1 week 3 */}
-          {/* Import the AddWishlistItem react component */}
-          {/* <AddWishlistItem /> */}
-          {/* TASK - React 1 week 3 */}
-          {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
-          {/* Implement the "REMOVE" function */}
-          {/* uncomment the following code snippet: */}
 
           <AddWishlistItem onAddWishlistItem={onAddOrRemovePlanet} />
 
@@ -109,12 +89,6 @@ export const Destinations = () => {
                 destinationTogo={selectedDestinationTogo}
               />
             ))}
-          {/* planetItem,  onAddOrRemoveDestination,  destinationTogo, */}
-          {/* TASK - React 1 week 2 */}
-          {/* Add all 4 planets! Europa, Moon, Mars, Titan  */}
-          {/* Use the README.md file for descriptions */}
-          {/* Create a <PlanetCard /> component, which accepts the following properties: */}
-          {/* name, description, thumbnail, isSelected, onAddOrRemovePlanet */}
         </section>
       </main>
     </div>
