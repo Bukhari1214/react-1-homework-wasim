@@ -1,40 +1,51 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+import { PlanetWishlistItem } from "@/components/PlanetWishlistItem/PlanetWishlistItem";
 
-import styles from '@/components/destination/destination.module.css';
-import { AddWishlistItem } from '@/components/destination/AddWishlistItem';
-
-// TASK - React 1 week 2
-// Move this to its own file
-const PlanetWishlistItem = ({
-  name,
-  onRemove,
-  thumbnail,
-}) => {
-  return (
-    <div className={styles.wishlistItem}>
-      <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
-      <b>{name.toUpperCase()}</b>
-      <button onClick={onRemove}>remove</button>
-    </div>
-  );
-}
-
+import styles from "@/components/destination/destination.module.css";
+import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
+import { destinationToGO } from "@/data/destonation";
+import PlanetCard from "@/components/PlanetCard/PlanetCard";
 
 export const Destinations = () => {
   const [selectedPlanets, onAddPlanet] = useState([]);
+  const [selectedDestinationTogo, setSelectedDestinationTogo] = useState([]);
 
-  let isPlanetSelected = false;
-  let numberOfPlanets = 0;
+  const onAddOrRemovePlanet = (thumbnail, name) => {
+    onAddPlanet((prev) => [
+      ...prev,
+      {
+        thumbnail,
+        name,
+        id: generateRandomId(),
+      },
+    ]);
+  };
 
-  const onAddOrRemovePlanet = (name, index) => {
-    // TASK - React 1 week 2
-    // Implement this function
-    // If you press the "ADD PLANET" the selected planet should display "SELECTED"
-    // And the counter should update, how many planets are selected (numberOfPlanets)
-    console.log(`You seleceted the following planet: ${name}, with the index of ${index}`);
+  function addDestination(itemToGo) {
+    console.log("itemToGo", itemToGo);
+    setSelectedDestinationTogo((prev) =>
+      prev.some((item) => item.id === itemToGo.id)
+        ? prev.filter((item) => item.id !== itemToGo.id)
+        : [...prev, itemToGo]
+    );
   }
+
+  function generateRandomId() {
+    const text = ["a", "b", "c", "e", "f", "g"];
+    let random = "";
+    for (let i = 0; i < text.length; i++) {
+      random = `${random}${text[i]}${Math.floor(Math.random() * text.length)}`;
+    }
+    return random;
+  }
+
+  const removeFromWishlist = (id) => {
+    onAddPlanet((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  console.log("selectedDestinationTogo", selectedDestinationTogo);
 
   return (
     <div className="fullBGpicture">
@@ -42,73 +53,46 @@ export const Destinations = () => {
         <h1>Travel destinations</h1>
         <section className="card">
           <h2>Wishlist</h2>
-          {/* TASK - React 1 week 2 */}
-          {/* Display the number Of selected planets */}
-          {/* Display the "no planets" message if it is empty! */}
-          <p>No planets in wishlist :(</p>
-          <p>You have {numberOfPlanets} in your wishlist</p>
-          <b>List coming soon after lesson 3!</b>
-          
-          {/* STOP! - this is for week 3!*/}
-          {/* TASK - React 1 week 3 */}
-          {/* Import the AddWishlistItem react component */}
-          {/* <AddWishlistItem /> */}
-          {/* TASK - React 1 week 3 */}
-          {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
-          {/* Implement the "REMOVE" function */}
-          {/* uncomment the following code snippet: */}
-          {/* 
+
+          {selectedPlanets.length > 0 ? (
+            <p>You have {selectedPlanets.length} in your wishlist</p>
+          ) : (
+            <p>{"No planets in wishlist :("}</p>
+          )}
+
+          <AddWishlistItem onAddWishlistItem={onAddOrRemovePlanet} />
+
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
-            <PlanetWishlistItem 
-              name="europa"
-              onRemove={() => removeFromWishlist('europa')}
-              thumbnail="/destination/image-europa.png"
-            />
-            <PlanetWishlistItem 
-              name="europa"
-              onRemove={() => removeFromWishlist('europa')}
-              thumbnail="/destination/image-europa.png"
-            />
-          </div> */}
+            <div>
+              {selectedPlanets.length > 0 &&
+                selectedPlanets.map((item) => (
+                  <PlanetWishlistItem
+                    key={item.id}
+                    name={item.name}
+                    onRemove={() => removeFromWishlist(item.id)}
+                    thumbnail={item.thumbnail}
+                  />
+                ))}
+            </div>
+          </div>
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
-          {/* TASK - React 1 week 2 */}
-          {/* Add all 4 planets! Europa, Moon, Mars, Titan  */}
-          {/* Use the README.md file for descriptions */}
-          {/* Create a <PlanetCard /> component, which accepts the following properties: */}
-          {/* name, description, thumbnail, isSelected, onAddOrRemovePlanet */}
-          <div className={styles.planetCard}>
-            <img className={styles.planetThumbnail} src="/destination/image-europa.png" alt="" />
-            <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetSelected ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button 
-              className="roundButton" 
-              onClick={() => onAddOrRemovePlanet('Pluto', 0)}
-            > 
-              {isPlanetSelected ? "REMOVE" : "ADD PLANET"}
-            </button>
-          </div>
-          <div className={styles.planetCard}>
-            <img className={styles.planetThumbnail} src="/destination/image-europa.png" alt="" />
-            <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetSelected ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button 
-              className="roundButton" 
-              onClick={() => onAddOrRemovePlanet('Pluto', 0)}
-            > 
-              {isPlanetSelected ? "REMOVE" : "ADD PLANET"}
-            </button>
-          </div>
+
+          {destinationToGO.length > 0 &&
+            destinationToGO.map((item) => (
+              <PlanetCard
+                key={item.id}
+                planetItem={item}
+                onAddOrRemoveDestination={() => addDestination(item)}
+                destinationTogo={selectedDestinationTogo}
+              />
+            ))}
         </section>
       </main>
     </div>
   );
-}
+};
 
 export default Destinations;

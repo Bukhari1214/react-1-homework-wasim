@@ -1,9 +1,3 @@
-// import styles from "./page.module.css";
-// TASK - React 1 week 1
-// After you are finished with creating the page, move the OurValues, OurCrew, OurPartners components into their own files
-// OurValues.js, OurCrew.js, OurPartners.js should live in this folder
-// import and use the components from the newly created files
-
 import OurCrew from "@/components/crew/OurCrew";
 import OurPartners from "@/components/partners/OurPartners";
 import OurValues from "@/components/values/OurValues";
@@ -22,9 +16,6 @@ export const Crew = () => {
         <section className="card">
           <OurPartners />
         </section>
-
-        {/* TASK - React 1 week 1 */}
-        {/* Add in the "OurPartners" component here */}
       </main>
     </div>
   );
